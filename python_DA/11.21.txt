@@ -1,0 +1,198 @@
+## Series를 생성할 때 list를 이용해서 만들었어요!
+## dict(Dictionary)를 이용해서 Series를 생성할 수 있어요
+import numpy as np
+import pandas as pd
+my_dict ={"서울": 1000, "부산" : 3000, "제주 ": 5000}
+s = pd.Series(my_dict)
+s.name ="지역별 가격 데이터" # Series 자체에 논리적인 이름
+print(s)
+s.index.name = "지역명"
+# s.value.name = "value"
+print(s)
+
+
+
+
+
+## DataFrame
+## DataFrame을 만드는 가장 간단한 방법
+import numpy as np
+import pandas as pd
+
+## DataFrame을 위한 dict를 만들어 보아요!
+# data = {"서울" : 1000,"인천" : 3000} ## => JSON
+data = {"name" :["홍길동","김길동"],   # 학생이름
+       "year" : [2015,2016],        # 입학연도
+       "points" : [3.9,4.5]}       # 평균평점
+## Series
+s = pd.Series(data)
+print(s)
+
+## DataFrame
+df = pd.DataFrame(data)
+display(df)
+
+print(df["name"])
+
+## DataFrame은 Series의 집합체  Series는 각각의 columns을 지칭
+print(df.values)
+print(df.shape)
+print(df.size)
+print(df.ndim)
+
+
+
+
+## DataFrame
+## DataFrame을 만드는 가장 간단한 방법
+import numpy as np
+import pandas as pd
+
+## DataFrame을 위한 dict를 만들어 보아요!
+# data = {"서울" : 1000,"인천" : 3000} ## => JSON
+data = {"name" :["홍길동","김길동"],   # 학생이름
+       "year" : [2015,2016],        # 입학연도
+       "points" : [3.9,4.5]}       # 평균평점
+## Series
+s = pd.Series(data)
+print(s)
+
+## DataFrame
+df = pd.DataFrame(data)
+display(df)
+
+print("DataFrame의 index : {}".format(df.index))
+print("DataFrame의 index[0] : {}".format(df.index[0]))
+print("DataFrame의 column : {}".format(df.columns))
+print("DataFrame의 column[1] : {}".format(df.columns[1]))
+
+
+
+
+## DataFrame
+## DataFrame을 만드는 가장 간단한 방법
+import numpy as np
+import pandas as pd
+
+## DataFrame을 위한 dict를 만들어 보아요!
+# data = {"서울" : 1000,"인천" : 3000} ## => JSON
+data = {"name" :["홍길동","김길동"],   # 학생이름
+       "year" : [2015,2016],        # 입학연도
+       "points" : [3.9,4.5]}       # 평균평점
+
+
+## DataFrame
+df = pd.DataFrame(data)
+df.columns.name = "학생정보"
+df.index.name = "sNum"
+display(df)
+
+## 간단하게 literal 형태로 DataFrame을 생성
+
+
+
+
+## DataFrame을 생성하는 방법
+## File(CSV)로 부터 데이터를 읽어와서 DataFrame을 생성
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv("./data/student.csv")
+display(df)
+
+
+
+## MovieLens Data File을 이용해서 DataFrame을 생성해 보아요!
+## ratings.csv, movies.csv
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv("./data/movies.csv")
+display(df.head())
+print(df.shape)
+
+
+
+
+
+## 의도치 않는 에러가 발생될 경우가 있어요!
+## 프로그래밍 단계에서는 문제가 없지만
+## 실행시 문제가 발생할 수 있는 코드들이 있어요!
+
+## Exception Handling
+try:
+    10/0  ### Exception 이 발생 => 극복해서 프로그램이 중지되지 않도록 처리해 보아요!
+except Exception as inst:
+    print(inst," : 에러 발생")
+finally:
+    print("호호")
+
+
+## 프로그램 계속 진행
+
+
+
+
+
+## Database에서 sql로 데이터를 추출해서 pandas의 DataFrame으로 생성
+## 사용하는 DBMS는 MySQL 사용하는 데이터는 book table
+## 데이터베이스는 강사용 컴퓨터를 이용
+## 강사용 컴퓨터 IP : 70.12.116.160
+import pymysql.cursors
+# MySQL DBMS를 사용하기 위한 module 로딩
+import numpy as np
+import pandas as pd
+
+# 데이터베이스 connection
+conn = pymysql.connect(host="localhost",
+                      user="data",
+                      password="data",
+                      db="library",
+                      charset="utf8")
+keyword = "여행"
+# database에서 data를 가져오기 위한 SQL을 작성
+sql="select btitle,bprice,bauthor "+\
+"from book "+\
+"where btitle like '%{}%'".format(keyword)
+
+# 책 제목에 keyword가 들어있는 행을 찾아서 제목,가격,저자정보를 가져와요
+try:
+    df=pd.read_sql(sql,conn)
+    display(df)
+    df.to_json("./data/book_columns.json",orient="columns")
+    df.to_json("./data/book_records.json",orient="records")
+    df.to_json("./data/book_index.json",orient="index")
+    df.to_json("./data/book_values.json",orient="values")
+
+except Exception as inst:
+    print(inst," : 에러 발생")
+finally:
+    conn.close()
+
+
+
+
+
+
+## 영화 진흥 위원회 일일 박스 오피스 정보를 이용해서
+## DataFrame을 만들어 보아요!
+## 접속해서 JSON을 얻어내면 그걸 분석해서
+## 내가 원하는 형태의 DataFrame을 생성
+import json
+import urllib
+import numpy as np
+import pandas as pd
+import pprint
+
+date = "20191120"
+api_key = "0a87847527398c43f8f4ec9f5d08eb20"
+movie_url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/"+\
+"boxoffice/searchDailyBoxOfficeList.json?"+\
+"key={}&targetDt={}".format(api_key,date)
+
+page = urllib.request.urlopen(movie_url) # 결과 JSON 문자열이 들어있는 page 객체
+json_page = json.loads(page.read())
+# print(json_page)
+pp = pprint.PrettyPrinter(indent=1)
+pp.pprint(json_page)
+
