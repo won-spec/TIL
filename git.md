@@ -13,6 +13,9 @@ Git은 분산형 버전관리 시스템 (DVCS)소스코드의 이력을 확인�
 ```bash
 $ git config --global user.name { github username }
 $ git config --global user.email { github useremail }
+
+#유저이름이랑 이메일 설정확인
+$ git config --global -l
 ```
 
 설정 내용을 입력하고 확인
