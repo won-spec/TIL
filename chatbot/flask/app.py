@@ -79,7 +79,6 @@ def godmade():
     
     return render_template('godmade.html', name = name, first = first, second = second, third =third)
 
-
 # app.py 가장 하단에 위치
 # 1.앞으로 flask run으로 서버를 켜는게 아니라. python app.py로 서버를 실행한다.
 # 2.내용이 바뀌어도 서버를 껐다 켜지 않아도 된다.
