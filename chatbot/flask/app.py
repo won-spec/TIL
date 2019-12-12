@@ -1,3 +1,4 @@
+#pip freeze > requirements.txt 
 from datetime import datetime
 from flask import Flask, render_template, request
 import random
