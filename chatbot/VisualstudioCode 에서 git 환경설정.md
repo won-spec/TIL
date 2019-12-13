@@ -1,4 +1,4 @@
-chatbot 만들기
+# VisualstudioCode 에서 git 환경설정
 
 1. 파이썬 설치
 
