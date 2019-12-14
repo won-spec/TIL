@@ -49,7 +49,7 @@ library(ggmap)
 #get strated 클릭 
 #내 구글맵 API 키 :AIzaSyDrTy9sIMPOvXZLffYeW5JlMHuv--XYD_I
 #생성한 구글 API key
-googleAPIkey = "AIzaSyDrTy9sIMPOvXZLffYeW5JlMHuv--XYD_I"
+googleAPIkey = ""
 #구글 API key를 이용해서 인증을 받자
 register_google(key = googleAPIkey)
 

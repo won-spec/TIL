@@ -5,9 +5,9 @@ library(devtools)
 install_github("dkahle/ggmap")
 library(ggmap)
 
-#내 구글맵 API 키 :AIzaSyDrTy9sIMPOvXZLffYeW5JlMHuv--XYD_I
+#내 구글맵 API 키 :
 
-googleAPIkey = "AIzaSyDrTy9sIMPOvXZLffYeW5JlMHuv--XYD_I"
+googleAPIkey = ""
 
 register_google(key = googleAPIkey)
 

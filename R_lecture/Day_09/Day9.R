@@ -24,7 +24,7 @@ request_url <- URLencode(request_url)
 request_url # API 호출 주소를 만들었어요
 
 # Open API를 사용할 때 거의 대부분 인증절차를 거쳐야 사용할 수 있어요
-apikey <- "4f102b22e5fc99528ac44d9211f49861"
+apikey <- ""
 
 # web에서 클라이언트 서버쪽 프로그램을 호출할 때 호출방식이라는게 있어요
 # GET, POST, PUT, DELETE (크게 4가지)

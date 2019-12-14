@@ -55,7 +55,8 @@ write(prettify(df_json),
 #두가지 방식존재 
 #1.DF를 다시 만드는것
 
-url2 <- "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=a4eb22aba123ac92944e486b2b560f89&targetDt="
+key=
+url2 <- "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key="key"&targetDt="
 request_url2 <- str_c(url2, #scan()콘솔창에서 직접입력하는 함수
                       scan());request_url2
 df <- fromJSON(request_url2)
